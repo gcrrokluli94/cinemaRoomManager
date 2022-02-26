@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 import static java.lang.System.out;
 
+
 public class Cinema {
+    static int currentIncome = 0;
+    static int totalIncome = 0;
+    static int ticketPrice = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -17,7 +21,7 @@ public class Cinema {
         int rowNum = 0, seatNum = 0, counter = 0;
         char[][] cinema = getArray(rows, seatsPerRow);
         Menu(cinema, rows, seatsPerRow, rowNum, seatNum, counter);
-        //System.exit(0);
+        System.exit(0);
     }
     public static void Menu(char[][] cinema,int rows, int seatsPerRow, int rowNum, int seatNum, int counter) {
         Scanner sc = new Scanner(System.in);
@@ -60,7 +64,7 @@ public class Cinema {
                     }
                     break;
                 case 3:
-                    Statistics(rows, seatsPerRow, rowNum, counter);
+                    Statistics(rows, seatsPerRow, counter);
                     Menu(cinema, rows, seatsPerRow, rowNum, seatNum, counter);
                     break;
                 case 0:
@@ -74,8 +78,7 @@ public class Cinema {
         col = seatsPerRow;
         row++;
         col++;
-        char[][] cinema = new char[row][col];
-        return cinema;
+        return new char[row][col];
     }
     public static void display(char[][] cinema, int rowNum, int seatNum) {
         char[][] booked = booking(cinema, rowNum, seatNum);
@@ -102,8 +105,9 @@ public class Cinema {
                 }
                 if (cinema[i][j] == cinema[i][0]) {
                     cinema[i][j] = numCharJ++;
-                } else if (cinema[i][j] != cinema[0][j] && cinema[i][j] != cinema[i][0]
-                        && cinema[i][j] != cinema[rowNum][seatNum]) {
+                } else if (cinema[i][j] != cinema[0][j]
+                            && cinema[i][j] != cinema[i][0]
+                            && cinema[i][j] != cinema[rowNum][seatNum]) {
                     cinema[i][j] = 'S';
                 }
             }
@@ -124,56 +128,50 @@ public class Cinema {
         return isAlreadyPurchased;
     }
     public static int calculateTicketPrice(int rows, int seatsPerRow, int rowNum) {
-        int frontHalf = 0, ticketPrice = 0;
 
         if (rows % 2 != 0 && rows * seatsPerRow > 60) {
-            frontHalf = rows / 2;
+            int frontHalf = rows / 2;
             if (rowNum > frontHalf) {
+                currentIncome += 8;
                 return ticketPrice = 8;
             } else {
+                currentIncome += 10;
                 return ticketPrice = 10;
             }
         } else if (rows % 2 == 0 && rows * seatsPerRow > 60) {
-            frontHalf = rows / 2;
+            int frontHalf = rows / 2;
             if (rowNum > frontHalf) {
+                currentIncome += 8;
                 return ticketPrice = 8;
             } else {
+                currentIncome += 10;
                 return ticketPrice = 10;
             }
         } else if (rows * seatsPerRow <= 60) {
+            currentIncome += 10;
             return ticketPrice = 10;
         }
         return ticketPrice;
     }
     public static int calculateTotalIncome(int rows, int seatsPerRow) {
-        int ticketPrice = 0;
-        int totalIncome = 0;
-        int frontHalf = 0;
-        int backHalf = 0;
 
         if (rows % 2 != 0 && rows * seatsPerRow > 60) {
-            frontHalf = rows / 2;
-            backHalf = (rows % 2) + frontHalf;
+            int frontHalf = rows / 2;
+            int backHalf = (rows % 2) + frontHalf;
             return totalIncome = (frontHalf * seatsPerRow * 10) + (backHalf * seatsPerRow * 8);
         } else if (rows % 2 == 0 && rows * seatsPerRow > 60) {
-            frontHalf = rows / 2;
-            backHalf = frontHalf;
-            return totalIncome = (frontHalf * seatsPerRow * 10) + (backHalf * seatsPerRow * 8);
+            int frontHalf = rows / 2;
+            return totalIncome = (frontHalf * seatsPerRow * 10) + (frontHalf * seatsPerRow * 8);
         } else if (rows * seatsPerRow <= 60) {
-            ticketPrice = 10;
-            return totalIncome = (rows * seatsPerRow) * ticketPrice;
+            return totalIncome = (rows * seatsPerRow) * 10;
         }
         return totalIncome;
     }
-    public static void Statistics(int rows, int seatsPerRow, int rowNum, int counter) {
+    public static void Statistics(int rows, int seatsPerRow, int numberOfPurchasedTickets) {
         final double PERCENT = 100.0;
-        int numberOfPurchasedTickets = counter;
 
-        int ticketPrice = calculateTicketPrice(rows,seatsPerRow,rowNum);
         int totalIncome = calculateTotalIncome(rows, seatsPerRow);
         double percentage = (numberOfPurchasedTickets / (double) (rows * seatsPerRow)) * PERCENT;
-
-        int currentIncome = numberOfPurchasedTickets * ticketPrice;
 
         out.println("Number of purchased tickets: " + numberOfPurchasedTickets);
         out.printf("Percentage: %.2f%%", percentage);
