@@ -173,7 +173,7 @@ public class Cinema {
         int totalIncome = calculateTotalIncome(rows, seatsPerRow);
         double percentage = (numberOfPurchasedTickets / (double) (rows * seatsPerRow)) * PERCENT;
 
-        int currentIncome = counter * ticketPrice;
+        int currentIncome = numberOfPurchasedTickets * ticketPrice;
 
         out.println("Number of purchased tickets: " + numberOfPurchasedTickets);
         out.printf("Percentage: %.2f%%", percentage);
