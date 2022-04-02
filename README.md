@@ -1,39 +1,48 @@
 # cinemaRoomManager
 Hyperskill.org Project
-Running a cinema theatre is no easy business. To help our friends, let's add statistics to your program. The stats will show the current income, total income, the number of available seats, and the percentage of occupancy.
 
-In addition, our friends asked you to take care of a small inconvenience: it's not good when a user can buy a ticket that has already been purchased by another user. Let's fix this!
+<h5>Description</h5>
 
-Objectives
-Now your menu should look like this:
+<p>Running a cinema theatre is no easy business. To help our friends, let's add statistics to your program. The stats will show the current income, total income, the number of available seats, and the percentage of occupancy. </p>
 
-1. Show the seats
+<p>In addition, our friends asked you to take care of a small inconvenience: it's not good when a user can buy a ticket that has already been purchased by another user. Let's fix this!</p>
+
+<h5>Objectives</h5>
+
+<p>Now your menu should look like this:</p>
+
+<pre><code class="language-no-highlight">1. Show the seats
 2. Buy a ticket
 3. Statistics
-0. Exit
-When the item Statistics is chosen, your program should print the following information:
+0. Exit</code></pre>
 
-The number of purchased tickets;
-The number of purchased tickets represented as a percentage. Percentages should be rounded to 2 decimal places;
-Current income;
-The total income that shows how much money the theatre will get if all the tickets are sold.
-The rest of the menu items should work the same way as before, except the item Buy a ticket shouldn't allow a user to buy a ticket that has already been purchased.
+<p>When the item <code class="java">Statistics</code> is chosen, your program should print the following information:</p>
 
-If a user chooses an already taken seat, print That ticket has already been purchased! and ask them to enter different seat coordinates until they pick an available seat. Of course, you shouldn't allow coordinates that are out of bounds. If this happens, print Wrong input! and ask to enter different seat coordinates until the user picks an available seat.
+<ul>
+	<li>The number of purchased tickets;</li>
+	<li>The number of purchased tickets represented as a percentage. Percentages should be rounded to 2 decimal places;</li>
+	<li>Current income;</li>
+	<li>The total income that shows how much money the theatre will get if all the tickets are sold.</li>
+</ul>
 
-Examples
-The greater-than symbol followed by a space (> ) represents the user input. Note that it's not part of the input.
+<p>The rest of the menu items should work the same way as before, except the item <code class="java">Buy a ticket</code> shouldn't allow a user to buy a ticket that has already been purchased.</p>
 
-Enter the number of rows:
-> 6
+<p>If a user chooses an already taken seat, print <code class="java">That ticket has already been purchased!</code> and ask them to enter different seat coordinates until they pick an available seat. Of course, you shouldn't allow coordinates that are out of bounds. If this happens, print <code class="java">Wrong input!</code> and ask to enter different seat coordinates until the user picks an available seat.</p>
+
+<h5>Examples</h5>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<pre><code class="language-no-highlight">Enter the number of rows:
+&gt; 6
 Enter the number of seats in each row:
-> 6
+&gt; 6
 
 1. Show the seats
 2. Buy a ticket
 3. Statistics
 0. Exit
-> 3
+&gt; 3
 
 Number of purchased tickets: 0
 Percentage: 0.00%
@@ -44,12 +53,12 @@ Total income: $360
 2. Buy a ticket
 3. Statistics
 0. Exit
-> 2
+&gt; 2
 
 Enter a row number:
-> 1
+&gt; 1
 Enter a seat number in that row:
-> 1
+&gt; 1
 
 Ticket price: $10
 
@@ -57,7 +66,7 @@ Ticket price: $10
 2. Buy a ticket
 3. Statistics
 0. Exit
-> 3
+&gt; 3
 
 Number of purchased tickets: 1
 Percentage: 2.78%
@@ -68,26 +77,26 @@ Total income: $360
 2. Buy a ticket
 3. Statistics
 0. Exit
-> 2
+&gt; 2
 
 Enter a row number:
-> 1
+&gt; 1
 Enter a seat number in that row:
-> 1
+&gt; 1
 
 That ticket has already been purchased!
 
 Enter a row number:
-> 10
+&gt; 10
 Enter a seat number in that row:
-> 20
+&gt; 20
 
 Wrong input!
 
 Enter a row number:
-> 4
+&gt; 4
 Enter a seat number in that row:
-> 4
+&gt; 4
 
 Ticket price: $10
 
@@ -95,7 +104,7 @@ Ticket price: $10
 2. Buy a ticket
 3. Statistics
 0. Exit
-> 1
+&gt; 1
 
 Cinema:
   1 2 3 4 5 6
@@ -110,7 +119,7 @@ Cinema:
 2. Buy a ticket
 3. Statistics
 0. Exit
-> 3
+&gt; 3
 
 Number of purchased tickets: 2
 Percentage: 5.56%
@@ -121,4 +130,5 @@ Total income: $360
 2. Buy a ticket
 3. Statistics
 0. Exit
-> 0
+&gt; 0
+</code></pre>
